@@ -1,0 +1,16 @@
+<li [ngClass]="baseClass">
+  <span [ngClass]="baseClass + '__name'"> {{ info?.name }}</span>
+
+  <span [ngClass]="baseClass + '__description'">
+    <img
+      [ngClass]="baseClass + '__description__img'"
+      [src]="'/assets/img/' + statusIcon"
+      alt=""
+    />
+    {{ info?.stateSky?.description }}</span
+  >
+
+  <span [ngClass]="baseClass + '__temperature'"
+    >{{ info?.temperatures?.max }}ºC / {{ info?.temperatures?.min }}ºC</span
+  >
+</li>

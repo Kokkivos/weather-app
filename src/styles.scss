@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+@import "/src/assets/scss/variables.scss";
+
+* {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-text-stroke: 1px transparent;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: $text-color;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: $bg-color;
+}

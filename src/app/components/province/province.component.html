@@ -1,0 +1,33 @@
+<section [ngClass]="baseClass">
+  <article [ngClass]="baseClass + '__left'">
+    <h1 [ngClass]="baseClass + '__left__title'">
+      {{ province?.NOMBRE_PROVINCIA | uppercase }}
+    </h1>
+  </article>
+
+  <article [ngClass]="baseClass + '__right'">
+    <h2 [ngClass]="baseClass + '__right__title'">
+      El tiempo para los principales municipios
+    </h2>
+
+    <div [ngClass]="baseClass + '__right__prediction'">
+      <p [ngClass]="baseClass + '__right__prediction__title'">
+        Predicción para hoy:
+      </p>
+      <p [ngClass]="baseClass + '__right__prediction__text'">
+        {{ weatherDescription?.today }}
+      </p>
+      <p [ngClass]="baseClass + '__right__prediction__title'">
+        Predicción para mañana:
+      </p>
+      <p [ngClass]="baseClass + '__right__prediction__text'">
+        {{ weatherDescription?.tomorrow }}
+      </p>
+    </div>
+
+    <ul [ngClass]="baseClass + '__right__list'">
+      <li>aaaa asasas</li>
+      <app-city *ngFor="let city of cities" [info]="city"></app-city>
+    </ul>
+  </article>
+</section>
