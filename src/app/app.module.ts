@@ -9,7 +9,10 @@ import { ProvinceItemListComponent } from './components/province-list/province-i
 import { ProvinceComponent } from './components/province/province.component';
 import { ProvinceListComponent } from './components/province-list/province-list.component';
 import { ListComponent } from './components/list/list.component';
+import { ErrorComponent } from './components/error/error.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,16 @@ import { ReplacePipe } from './pipes/replace.pipe';
     ProvinceComponent,
     ProvinceListComponent,
     ListComponent,
+    ErrorComponent,
     ReplacePipe,
+    SpinnerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule.forRoot({}),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
