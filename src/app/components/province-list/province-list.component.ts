@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataList, Item } from 'src/app/models/DataList';
 import { Provinces } from 'src/app/models/Provinces';
 import { WeatherService } from 'src/app/services/weather.service';
@@ -12,13 +13,29 @@ export class ProvinceListComponent implements OnInit {
   baseClass: string = 'provinces';
   provinces: Provinces | undefined;
   dataList: DataList | undefined;
+  loadingVisible: boolean = true;
+  hideLoading: boolean = false;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private _weatherService: WeatherService,
+    private _router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.weatherService.getProvinces().subscribe((data: any) => {
-      if (data) {
-        const { provincias } = data;
+  handleLoading() {
+    const timer = () => {
+      this.hideLoading = true;
+      clearInterval(myInterval);
+    };
+    this.loadingVisible = false;
+    const myInterval = setInterval(timer, 300);
+  }
+
+  async ngOnInit(): Promise<void> {
+    await this._weatherService.getProvinces().subscribe(
+      (res: any) => {
+        this.handleLoading();
+
+        const { provincias } = res;
         this.provinces = provincias;
 
         this.dataList =
@@ -30,7 +47,13 @@ export class ProvinceListComponent implements OnInit {
             };
             return res || undefined;
           });
-      }
-    });
+      },
+      (err: any) => {
+        this.handleLoading();
+        console.log('HTTP Error', err);
+        this._router.navigate(['error']);
+      },
+      () => console.log('HTTP request completed.')
+    );
   }
 }

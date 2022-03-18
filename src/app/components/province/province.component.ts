@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cities } from 'src/app/models/Cities';
 import { DataList, Item } from 'src/app/models/DataList';
 import { Province, WeatherDescription } from 'src/app/models/Provinces';
+import { ProvinceResponse } from 'src/app/models/Response';
 import { WeatherService } from 'src/app/services/weather.service';
-import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-province',
@@ -18,19 +18,31 @@ export class ProvinceComponent implements OnInit {
   cities: Cities | undefined;
   weatherDescription: WeatherDescription | undefined;
   dataList: DataList | undefined;
+  loadingVisible: boolean = true;
+  hideLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private weatherService: WeatherService
+    private _router: Router,
+    private _weatherService: WeatherService
   ) {}
 
-  ngOnInit(): void {
+  handleLoading() {
+    const timer = () => {
+      this.hideLoading = true;
+      clearInterval(myInterval);
+    };
+    this.loadingVisible = false;
+    const myInterval = setInterval(timer, 300);
+  }
+
+  async ngOnInit(): Promise<void> {
     const routeParams = this.route.snapshot.paramMap;
     const provinceCode = String(routeParams.get('code'));
 
-    this.weatherService.getProvinceInfo(provinceCode).subscribe((data: any) => {
-      if (data) {
-        const { provincia, ciudades, today, tomorrow } = data;
+    await this._weatherService.getProvinceInfo(provinceCode).subscribe(
+      (res: ProvinceResponse) => {
+        const { provincia, ciudades, today, tomorrow } = res;
         this.weatherDescription = {
           today: today.p,
           tomorrow: tomorrow.p,
@@ -48,7 +60,15 @@ export class ProvinceComponent implements OnInit {
             };
             return res || undefined;
           });
-      }
-    });
+
+        this.handleLoading();
+      },
+      (err: any) => {
+        console.log('HTTP Error', err);
+        this._router.navigate(['error']);
+        this.handleLoading();
+      },
+      () => console.log('HTTP request completed.')
+    );
   }
 }

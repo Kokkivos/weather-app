@@ -5,20 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ProvinceItemListComponent } from './components/province-list/province-item-list/province-item-list.component';
 import { ProvinceComponent } from './components/province/province.component';
 import { ProvinceListComponent } from './components/province-list/province-list.component';
 import { ListComponent } from './components/list/list.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { ErrorComponent } from './components/error/error.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProvinceItemListComponent,
     ProvinceComponent,
     ProvinceListComponent,
     ListComponent,
+    ErrorComponent,
     ReplacePipe,
+    LoadingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

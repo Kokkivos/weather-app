@@ -1,11 +1,19 @@
 <ul [ngClass]="baseClass">
-  <li [ngClass]="baseClass + '__header'"><span>HEADER indo</span></li>
+  <li [ngClass]="baseClass + '__header'">
+    <span [ngClass]="itemBaseClass + '__name'">Nombre</span>
+    <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__description'"
+      >Estado del cielo</span
+    >
+    <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__temperature'"
+      >Max / Min</span
+    >
+  </li>
 
   <li
     [ngClass]="
       item.code ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass
     "
-    *ngFor="let item of data"
+    *ngFor="let item of data; index as i"
   >
     <a
       [ngClass]="itemBaseClass + '__link'"
@@ -33,5 +41,17 @@
         >{{ item.temperatures?.max }}ºC / {{ item.temperatures?.min }}ºC</span
       >
     </ng-template>
+
+    <span
+      *ngIf="withDelete"
+      [ngClass]="itemBaseClass + '__delete'"
+      (click)="delete(i)"
+    >
+      <img
+        [ngClass]="itemBaseClass + '__delete__img'"
+        src="assets/img/X.svg"
+        alt=""
+      />
+    </span>
   </li>
 </ul>

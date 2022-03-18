@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs';
+import { ProvinceResponse, ProvincesResponse } from '../models/Response';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +11,25 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  public getProvinces() {
-    return this.http.get(this.weatherUrl);
+  public getProvinces(): ProvincesResponse | any {
+    return this.http.get(this.weatherUrl).pipe(
+      map((result) => {
+        return result;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
   }
 
-  public getProvinceInfo(code: string) {
-    return this.http.get(`${this.weatherUrl}/${code}`);
+  public getProvinceInfo(code: string): ProvinceResponse | any {
+    return this.http.get(`${this.weatherUrl}/${code}`).pipe(
+      map((result) => {
+        return result;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
   }
 }

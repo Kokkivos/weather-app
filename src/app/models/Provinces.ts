@@ -1,3 +1,5 @@
+import { Cities } from './Cities';
+
 export interface WeatherDescription {
   today: string;
   tomorrow: string;

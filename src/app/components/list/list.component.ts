@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DataList, Item } from 'src/app/models/DataList';
 
 @Component({
@@ -6,12 +6,14 @@ import { DataList, Item } from 'src/app/models/DataList';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   baseClass: string = 'list';
   itemBaseClass: string = 'list__item';
   itemLinkBaseClass: string = 'list__item--with-link';
 
   @Input() data: DataList | undefined;
+  @Input() simpleHeader: boolean = true;
+  @Input() withDelete: boolean = false;
 
   getStatus(item: Item) {
     if (item.temperatures?.min) {
@@ -21,5 +23,7 @@ export class ListComponent implements OnInit {
     return '';
   }
 
-  ngOnInit(): void {}
+  delete(index: number) {
+    this.data && this.data.splice(index, 1);
+  }
 }

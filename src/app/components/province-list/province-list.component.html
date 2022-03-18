@@ -1,5 +1,7 @@
 <section [ngClass]="baseClass">
   <article [ngClass]="baseClass + '__content'">
-    <app-list [data]="dataList"></app-list>
+    <app-list [data]="dataList" [withDelete]="true"></app-list>
   </article>
 </section>
+
+<app-loading *ngIf="!hideLoading" [visible]="loadingVisible"></app-loading>

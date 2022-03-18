@@ -1,5 +1,17 @@
 <section [ngClass]="baseClass">
   <article [ngClass]="baseClass + '__left'">
+    <a
+      [ngClass]="baseClass + '__left__link'"
+      [title]="'home'"
+      [routerLink]="['']"
+    >
+      <img
+        [ngClass]="baseClass + '__left__link__img'"
+        src="assets/img/back.png"
+        alt="inicio"
+      />
+    </a>
+
     <h1 [ngClass]="baseClass + '__left__title'">
       {{
         province?.NOMBRE_PROVINCIA
@@ -30,7 +42,9 @@
     </div>
 
     <div [ngClass]="baseClass + '__right__list'">
-      <app-list [data]="dataList"></app-list>
+      <app-list [data]="dataList" [simpleHeader]="false"></app-list>
     </div>
   </article>
 </section>
+
+<app-loading *ngIf="!hideLoading" [visible]="loadingVisible"></app-loading>
