@@ -1,7 +1,11 @@
 <section [ngClass]="baseClass">
   <article [ngClass]="baseClass + '__left'">
     <h1 [ngClass]="baseClass + '__left__title'">
-      {{ province?.NOMBRE_PROVINCIA | uppercase }}
+      {{
+        province?.NOMBRE_PROVINCIA
+          | uppercase
+          | replace: { changeThis: "/", forThis: " " }
+      }}
     </h1>
   </article>
 
@@ -25,9 +29,8 @@
       </p>
     </div>
 
-    <ul [ngClass]="baseClass + '__right__list'">
-      <li>aaaa asasas</li>
-      <app-city *ngFor="let city of cities" [info]="city"></app-city>
-    </ul>
+    <div [ngClass]="baseClass + '__right__list'">
+      <app-list [data]="dataList"></app-list>
+    </div>
   </article>
 </section>

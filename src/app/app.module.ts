@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProvinceItemListComponent } from './components/province-list/province-item-list/province-item-list.component';
 import { ProvinceComponent } from './components/province/province.component';
 import { ProvinceListComponent } from './components/province-list/province-list.component';
-import { CityComponent } from './components/city/city.component';
+import { ListComponent } from './components/list/list.component';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CityComponent } from './components/city/city.component';
     ProvinceItemListComponent,
     ProvinceComponent,
     ProvinceListComponent,
-    CityComponent,
+    ListComponent,
+    ReplacePipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

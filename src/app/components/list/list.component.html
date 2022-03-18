@@ -1,0 +1,37 @@
+<ul [ngClass]="baseClass">
+  <li [ngClass]="baseClass + '__header'"><span>HEADER indo</span></li>
+
+  <li
+    [ngClass]="
+      item.code ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass
+    "
+    *ngFor="let item of data"
+  >
+    <a
+      [ngClass]="itemBaseClass + '__link'"
+      *ngIf="item.code; else sayHelloTemplate"
+      [routerLink]="['/province', item.code]"
+    >
+      <ng-container *ngTemplateOutlet="sayHelloTemplate"> </ng-container>
+    </a>
+
+    <ng-template #sayHelloTemplate>
+      <span [ngClass]="itemBaseClass + '__name'"> {{ item.name }}</span>
+
+      <span *ngIf="item.stateSky" [ngClass]="itemBaseClass + '__description'">
+        <img
+          [ngClass]="itemBaseClass + '__description__img'"
+          [src]="'/assets/img/' + getStatus(item || undefined)"
+          alt=""
+        />
+        {{ item.stateSky?.description }}</span
+      >
+
+      <span
+        *ngIf="item.temperatures"
+        [ngClass]="itemBaseClass + '__temperature'"
+        >{{ item.temperatures?.max }}ºC / {{ item.temperatures?.min }}ºC</span
+      >
+    </ng-template>
+  </li>
+</ul>

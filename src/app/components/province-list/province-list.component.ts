@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataList, Item } from 'src/app/models/DataList';
 import { Provinces } from 'src/app/models/Provinces';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -8,7 +9,9 @@ import { WeatherService } from 'src/app/services/weather.service';
   styleUrls: ['./province-list.component.scss'],
 })
 export class ProvinceListComponent implements OnInit {
+  baseClass: string = 'provinces';
   provinces: Provinces | undefined;
+  dataList: DataList | undefined;
 
   constructor(private weatherService: WeatherService) {}
 
@@ -17,6 +20,16 @@ export class ProvinceListComponent implements OnInit {
       if (data) {
         const { provincias } = data;
         this.provinces = provincias;
+
+        this.dataList =
+          this.provinces &&
+          this.provinces.map((o) => {
+            const res: Item = {
+              name: o.NOMBRE_PROVINCIA,
+              code: o.CODPROV,
+            };
+            return res || undefined;
+          });
       }
     });
   }

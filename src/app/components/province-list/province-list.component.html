@@ -1,7 +1,5 @@
-<ul>
-  <app-province-item-list
-    [code]="province.CODPROV"
-    [name]="province.NOMBRE_PROVINCIA"
-    *ngFor="let province of provinces"
-  ></app-province-item-list>
-</ul>
+<section [ngClass]="baseClass">
+  <article [ngClass]="baseClass + '__content'">
+    <app-list [data]="dataList"></app-list>
+  </article>
+</section>
