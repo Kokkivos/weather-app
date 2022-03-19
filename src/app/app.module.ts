@@ -5,24 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ProvinceComponent } from './components/province/province.component';
-import { ProvinceListComponent } from './components/province-list/province-list.component';
-import { ListComponent } from './components/list/list.component';
-import { ReplacePipe } from './pipes/replace.pipe';
 import { ErrorComponent } from './components/error/error.component';
-import { LoadingComponent } from './components/loading/loading.component';
+
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProvinceComponent,
-    ProvinceListComponent,
-    ListComponent,
-    ErrorComponent,
-    ReplacePipe,
-    LoadingComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, ErrorComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })

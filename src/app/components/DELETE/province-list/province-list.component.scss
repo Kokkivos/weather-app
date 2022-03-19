@@ -1,0 +1,13 @@
+.provinces {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  &__content {
+    width: 80vw;
+    height: 70vh;
+    overflow: hidden;
+  }
+}
