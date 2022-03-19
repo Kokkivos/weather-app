@@ -10,7 +10,7 @@ import { ProvinceListComponent } from './components/province-list/province-list.
 import { ListComponent } from './components/list/list.component';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { ErrorComponent } from './components/error/error.component';
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
