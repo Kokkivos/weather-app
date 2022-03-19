@@ -31,29 +31,27 @@ export class ProvincesComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    await this._weatherService.getProvinces().subscribe(
-      (res: any) => {
-        this.handleLoading();
-
-        const { provincias } = res;
-        this.provinces = provincias;
-
-        this.dataList =
-          this.provinces &&
-          this.provinces.map((o) => {
-            const res: Item = {
-              name: o.NOMBRE_PROVINCIA,
-              code: o.CODPROV,
-            };
-            return res || undefined;
-          });
-      },
-      (err: any) => {
-        this.handleLoading();
-        console.log('HTTP Error', err);
-        this._router.navigate(['error']);
-      },
-      () => console.log('HTTP request completed.')
-    );
+    // await this._weatherService.getAllProvinces().subscribe(
+    //   (res: any) => {
+    //     this.handleLoading();
+    //     const { provincias } = res;
+    //     this.provinces = provincias;
+    //     this.dataList =
+    //       this.provinces &&
+    //       this.provinces.map((o) => {
+    //         const res: Item = {
+    //           name: o.NOMBRE_PROVINCIA,
+    //           code: o.CODPROV,
+    //         };
+    //         return res || undefined;
+    //       });
+    //   },
+    //   (err: any) => {
+    //     this.handleLoading();
+    //     console.log('HTTP Error', err);
+    //     this._router.navigate(['error']);
+    //   },
+    //   () => console.log('HTTP request completed.')
+    // );
   }
 }

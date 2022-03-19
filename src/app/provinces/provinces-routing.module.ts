@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProvinceComponent } from '../components/province/province.component';
 
 import { ProvincesComponent } from './provinces.component';
+import { ProvincesResolver } from './provinces.resolver';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       {
         path: '',
         component: ProvincesComponent,
+        resolve: { provinces: ProvincesResolver },
       },
       {
         path: 'province/:code',
