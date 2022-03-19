@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProvinceListComponent } from '../components/DELETE/province-list/province-list.component';
+import { ProvinceComponent } from '../components/province/province.component';
 
 import { ProvincesComponent } from './provinces.component';
 
@@ -13,8 +13,8 @@ const routes: Routes = [
         component: ProvincesComponent,
       },
       {
-        path: ':CODPROV',
-        component: ProvinceListComponent,
+        path: 'province/:code',
+        component: ProvinceComponent,
       },
     ],
   },

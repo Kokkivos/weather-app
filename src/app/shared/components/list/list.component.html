@@ -1,14 +1,13 @@
+<div [ngClass]="baseClass + '--header'">
+  <span [ngClass]="itemBaseClass + '__name'">Nombre</span>
+  <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__description'"
+    >Estado del cielo</span
+  >
+  <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__temperature'"
+    >Max / Min</span
+  >
+</div>
 <ul [ngClass]="baseClass">
-  <li [ngClass]="baseClass + '__header'">
-    <span [ngClass]="itemBaseClass + '__name'">Nombre</span>
-    <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__description'"
-      >Estado del cielo</span
-    >
-    <span *ngIf="!simpleHeader" [ngClass]="itemBaseClass + '__temperature'"
-      >Max / Min</span
-    >
-  </li>
-
   <li
     [ngClass]="
       item.code ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass

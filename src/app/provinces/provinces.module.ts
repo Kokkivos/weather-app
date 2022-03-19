@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ProvincesComponent } from './provinces.component';
 import { ProvincesRoutingModule } from './provinces-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ProvinceComponent } from '../components/province/province.component';
 
 @NgModule({
-  declarations: [ProvincesComponent],
+  declarations: [ProvincesComponent, ProvinceComponent],
   imports: [CommonModule, ProvincesRoutingModule, SharedModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
