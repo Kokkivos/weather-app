@@ -6,6 +6,8 @@ import { ProvincesRoutingModule } from './provinces-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProvinceComponent } from '../components/province/province.component';
 
+import { StoreModule } from '@ngrx/store';
+
 @NgModule({
   declarations: [ProvincesComponent, ProvinceComponent],
   imports: [CommonModule, ProvincesRoutingModule, SharedModule],

@@ -13,8 +13,6 @@ export class ProvincesComponent implements OnInit {
   baseClass: string = 'provinces';
   provinces: Provinces | undefined;
   dataList: DataList | undefined;
-  loadingVisible: boolean = true;
-  hideLoading: boolean = false;
 
   constructor(
     private _weatherService: WeatherService,
