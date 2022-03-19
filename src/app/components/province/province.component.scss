@@ -73,28 +73,10 @@
     &__list {
       height: auto;
       overflow: hidden;
-
-      &::ng-deep {
-        .list {
-          &__header {
-            width: calc(75% - 6rem);
-          }
-        }
-      }
     }
 
     @include mqMax768-content;
   }
 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-
-    &__header {
-      width: 100%;
-      height: 20vh;
-    }
-    &__content {
-      width: 100%;
-    }
-  }
+  @include mqMax768-section;
 }

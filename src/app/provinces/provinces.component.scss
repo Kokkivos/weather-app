@@ -31,6 +31,13 @@
   &__content {
     @include article-content;
 
+    &__list {
+      height: auto;
+      overflow: hidden;
+    }
+
     @include mqMax768-content;
   }
+
+  @include mqMax768-section;
 }

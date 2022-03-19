@@ -6,6 +6,8 @@
   </article>
 
   <article [ngClass]="baseClass + '__content'">
-    <app-list [data]="dataList" [withDelete]="true"></app-list>
+    <div [ngClass]="baseClass + '__content__list'">
+      <app-list [data]="dataList" [withDelete]="true"></app-list>
+    </div>
   </article>
 </section>
