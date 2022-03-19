@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DataList, Item } from 'src/app/models/DataList';
+import { DataList, Item } from 'src/app/shared/models/DataList';
 
 @Component({
   selector: 'app-list',

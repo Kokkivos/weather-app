@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cities } from 'src/app/models/Cities';
-import { DataList, Item } from 'src/app/models/DataList';
-import { Province, WeatherDescription } from 'src/app/models/Provinces';
-import { ProvinceResponse } from 'src/app/models/Response';
-import { WeatherService } from 'src/app/services/weather.service';
+import { Cities } from 'src/app/shared/models/Cities';
+import { DataList, Item } from 'src/app/shared/models/DataList';
+import { Province, WeatherDescription } from 'src/app/shared/models/Provinces';
+import { ProvinceResponse } from 'src/app/shared/models/Response';
+import { WeatherService } from 'src/app/shared/services/weather.service';
 
 @Component({
   selector: 'app-province',

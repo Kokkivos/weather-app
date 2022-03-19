@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataList, Item } from 'src/app/models/DataList';
-import { Provinces } from 'src/app/models/Provinces';
-import { WeatherService } from 'src/app/services/weather.service';
+import { DataList, Item } from 'src/app/shared/models/DataList';
+import { Provinces } from 'src/app/shared/models/Provinces';
+import { WeatherService } from 'src/app/shared/services/weather.service';
 
 @Component({
   selector: 'app-provinces',
