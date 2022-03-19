@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProvincesResponse } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
 
@@ -18,15 +18,10 @@ export class ProvincesResolver implements Resolve<any> {
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<Observable<boolean>> {
-    console.log(1);
-    const provinces: ProvincesResponse | string =
+  ): Promise<ProvincesResponse | boolean> {
+    const provinces: ProvincesResponse | boolean =
       await this._weatherService.getAllProvinces();
-
-    console.log(2);
-    console.log(provinces);
     debugger;
-
-    return of(true);
+    return provinces;
   }
 }

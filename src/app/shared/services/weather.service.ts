@@ -11,13 +11,13 @@ export class WeatherService {
 
   constructor(private _http: HttpClient) {}
 
-  getAllProvinces(): Promise<ProvincesResponse | string> {
+  getAllProvinces(): Promise<ProvincesResponse | boolean> {
     return firstValueFrom(
       this._http.get<ProvincesResponse>(this.weatherUrl).pipe(
         map((result) => {
           return result;
         }),
-        catchError((err) => of(`Bad Promise`))
+        catchError(() => of(false))
       )
     );
   }

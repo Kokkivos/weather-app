@@ -21,15 +21,6 @@ export class ProvincesComponent implements OnInit {
     private _router: Router
   ) {}
 
-  handleLoading() {
-    const timer = () => {
-      this.hideLoading = true;
-      clearInterval(myInterval);
-    };
-    this.loadingVisible = false;
-    const myInterval = setInterval(timer, 300);
-  }
-
   async ngOnInit(): Promise<void> {
     // await this._weatherService.getAllProvinces().subscribe(
     //   (res: any) => {
