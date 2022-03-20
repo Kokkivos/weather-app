@@ -7,10 +7,16 @@ import { SharedModule } from '../shared/shared.module';
 import { ProvinceComponent } from '../components/province/province.component';
 
 import { StoreModule } from '@ngrx/store';
+import { ProvincesReducer } from '../reduxe/provinces.reducers';
 
 @NgModule({
   declarations: [ProvincesComponent, ProvinceComponent],
-  imports: [CommonModule, ProvincesRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    ProvincesRoutingModule,
+    SharedModule,
+    StoreModule.forFeature('allProvinces', ProvincesReducer),
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProvincesModule {}

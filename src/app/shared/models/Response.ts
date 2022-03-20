@@ -1,36 +1,61 @@
-import { Cities } from './Cities';
-import { Province } from './Provinces';
+export interface StateSkyModel {
+  description: string;
+  id: string;
+}
+export interface TemperaturesModel {
+  max: string;
+  min: string;
+}
 
-export interface ComautonomaResponse {
+export interface CityModel {
+  id: string;
+  idProvince: string;
+  name: string;
+  nameProvince: string;
+  stateSky: StateSkyModel;
+  temperatures: TemperaturesModel;
+}
+export interface CitiesModel extends Array<CityModel> {}
+
+export interface ComautonomaModel {
   ID: string;
   CODAUTON: string;
   CODCOMUN: string;
   NOMBRE: string;
 }
 
-export interface BreadcrumResponse {
+export interface BreadcrumModel {
   name: string;
   url: string | null;
   title: string;
 }
-export interface BreadcrumsResponse extends Array<BreadcrumResponse> {}
+export interface BreadcrumsModelModel extends Array<BreadcrumModel> {}
 
-export interface ProvinceResponse {
+export interface SingleProvinceModel {
   title: string;
   today: { p: string };
   tomorrow: { p: string };
-  ciudades: Cities;
-  provincia: Province;
-  comautonoma: ComautonomaResponse;
-  breadcrumb: BreadcrumsResponse;
+  ciudades: CitiesModel;
+  provincia: ProvinceModel;
+  comautonoma: ComautonomaModel;
+  breadcrumb: BreadcrumsModelModel;
   metadescripcion: string;
   keywords: string;
 }
 
-export interface ProvincesResponse {
-  breadcrumb: BreadcrumsResponse;
+// All Provinces
+export interface ProvinceModel {
+  CAPITAL_PROVINCIA: string;
+  CODAUTON: string;
+  CODPROV: string;
+  COMUNIDAD_CIUDAD_AUTONOMA: string;
+  NOMBRE_PROVINCIA: string;
+}
+export interface ProvincesModel extends Array<ProvinceModel> {}
+export interface AllProvincesModel {
+  breadcrumb: BreadcrumModel;
   keywords: string;
   metadescripcion: string;
-  provincias: Province;
+  provincias: ProvincesModel;
   title: string;
 }

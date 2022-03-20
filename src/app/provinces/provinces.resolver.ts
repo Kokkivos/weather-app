@@ -5,10 +5,11 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { AppState } from '../reduxe/state.redux';
-import { ProvincesResponse } from '../shared/models/Response';
+import { AllProvincesModel } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
 import { Store } from '@ngrx/store';
 import { SpinnerActions } from '../reduxe/spinner.actions';
+import { ProvincesActions } from '../reduxe/provinces.action';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +23,15 @@ export class ProvincesResolver implements Resolve<any> {
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<ProvincesResponse | boolean> {
+  ): Promise<AllProvincesModel | boolean> {
     this._store.dispatch(SpinnerActions.updateSpinner({ show: true }));
 
-    const provinces: ProvincesResponse | boolean =
+    const provinces: AllProvincesModel | boolean =
       await this._weatherService.getAllProvinces();
 
+    this._store.dispatch(ProvincesActions.setProvinces(provinces));
     this._store.dispatch(SpinnerActions.updateSpinner({ show: false }));
+
     return provinces;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DataList, Item } from 'src/app/shared/models/DataList';
+import { DataListModel, ItemModel } from 'src/app/shared/models/DataList';
 
 @Component({
   selector: 'app-list',
@@ -11,11 +11,11 @@ export class ListComponent {
   itemBaseClass: string = 'list__item';
   itemLinkBaseClass: string = 'list__item--with-link';
 
-  @Input() data: DataList | undefined;
+  @Input() data: DataListModel | undefined;
   @Input() simpleHeader: boolean = true;
   @Input() withDelete: boolean = false;
 
-  getStatus(item: Item) {
+  getStatus(item: ItemModel) {
     if (item.temperatures?.min) {
       const temp = parseInt(item.temperatures.min);
       return temp < 0 ? 'ice.png' : temp > 10 ? 'sun.png' : 'cloud.png';

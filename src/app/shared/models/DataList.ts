@@ -1,9 +1,9 @@
-import { StateSky, Temperatures } from './Cities';
+import { StateSkyModel, TemperaturesModel } from './Response';
 
-export interface Item {
+export interface ItemModel {
   name: string;
   code?: string;
-  stateSky?: StateSky;
-  temperatures?: Temperatures;
+  stateSky?: StateSkyModel;
+  temperatures?: TemperaturesModel;
 }
-export interface DataList extends Array<Item> {}
+export interface DataListModel extends Array<ItemModel> {}

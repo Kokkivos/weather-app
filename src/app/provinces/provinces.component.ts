@@ -1,46 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { DataList, Item } from 'src/app/shared/models/DataList';
-import { Provinces } from 'src/app/shared/models/Provinces';
-import { WeatherService } from 'src/app/shared/services/weather.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ProvincesActions } from '../reduxe/provinces.action';
+import { AppState } from '../reduxe/state.redux';
+import { AllProvincesModel, ProvinceModel } from '../shared/models/Response';
+import { WeatherService } from '../shared/services/weather.service';
 
 @Component({
   selector: 'app-provinces',
   templateUrl: './provinces.component.html',
   styleUrls: ['./provinces.component.scss'],
 })
-export class ProvincesComponent implements OnInit {
+export class ProvincesComponent {
   baseClass: string = 'provinces';
-  provinces: Provinces | undefined;
-  dataList: DataList | undefined;
+
+  allProvinces$: Observable<AllProvincesModel> =
+    this._weatherService.allProvinces$;
 
   constructor(
-    private _weatherService: WeatherService,
-    private _router: Router
-  ) {}
+    private _store: Store<AppState>,
+    private _weatherService: WeatherService
+  ) {
+    this.allProvinces$.subscribe({
+      next(data) {
+        debugger;
+      },
+      error(msg) {
+        debugger;
+        console.log('Error Getting Location: ', msg);
+      },
+    });
+  }
 
-  async ngOnInit(): Promise<void> {
-    // await this._weatherService.getAllProvinces().subscribe(
-    //   (res: any) => {
-    //     this.handleLoading();
-    //     const { provincias } = res;
-    //     this.provinces = provincias;
-    //     this.dataList =
-    //       this.provinces &&
-    //       this.provinces.map((o) => {
-    //         const res: Item = {
-    //           name: o.NOMBRE_PROVINCIA,
-    //           code: o.CODPROV,
-    //         };
-    //         return res || undefined;
-    //       });
-    //   },
-    //   (err: any) => {
-    //     this.handleLoading();
-    //     console.log('HTTP Error', err);
-    //     this._router.navigate(['error']);
-    //   },
-    //   () => console.log('HTTP request completed.')
-    // );
+  deleteProvince(province: ProvinceModel) {
+    this._store.dispatch(ProvincesActions.deleteProvinces(province));
   }
 }

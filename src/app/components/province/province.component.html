@@ -13,11 +13,11 @@
     </a>
 
     <h1 [ngClass]="baseClass + '__header__title'">
-      {{
+      <!-- {{
         province?.NOMBRE_PROVINCIA
           | uppercase
           | replace: { changeThis: "/", forThis: " " }
-      }}
+      }} -->
     </h1>
   </article>
 
@@ -31,18 +31,18 @@
         Predicción para hoy:
       </p>
       <p [ngClass]="baseClass + '__content__prediction__text'">
-        {{ weatherDescription?.today }}
+        <!-- {{ WeatherDescriptionModel?.today }} -->Falta
       </p>
       <p [ngClass]="baseClass + '__content__prediction__title'">
         Predicción para mañana:
       </p>
       <p [ngClass]="baseClass + '__content__prediction__text'">
-        {{ weatherDescription?.tomorrow }}
+        <!-- {{ WeatherDescriptionModel?.tomorrow }} -->Falta
       </p>
     </div>
 
     <div [ngClass]="baseClass + '__content__list'">
-      <app-list [data]="dataList" [simpleHeader]="false"></app-list>
+      <!-- <app-list [data]="dataList" [simpleHeader]="false"></app-list> -->
     </div>
   </article>
 </section>
