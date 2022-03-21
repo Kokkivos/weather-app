@@ -6,6 +6,7 @@ import { AppState } from '../reduxe/state.redux';
 import { AllProvincesModel, ProvinceModel } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
 import { AllModelsType } from '../shared/models/allModelsType';
+import { ItemModel } from '../shared/models/DataList';
 
 @Component({
   selector: 'app-provinces',

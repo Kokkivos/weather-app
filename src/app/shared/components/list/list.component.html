@@ -7,44 +7,50 @@
     >Max / Min</span
   >
 </div>
+
 <ul [ngClass]="baseClass">
   <li
     [ngClass]="
-      item.code ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass
+      linkable ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass
     "
-    *ngFor="let item of data; index as i"
+    *ngFor="let item of data"
   >
     <a
       [ngClass]="itemBaseClass + '__link'"
-      *ngIf="item.code; else sayHelloTemplate"
-      [routerLink]="['/province', item.code]"
+      *ngIf="linkable; else dataListTemplate"
+      [routerLink]="['/province', item.CODPROV]"
     >
-      <ng-container *ngTemplateOutlet="sayHelloTemplate"> </ng-container>
+      <ng-container *ngTemplateOutlet="dataListTemplate"> </ng-container>
     </a>
 
-    <ng-template #sayHelloTemplate>
-      <span [ngClass]="itemBaseClass + '__name'"> {{ item.name }}</span>
+    <ng-template #dataListTemplate>
+      <span [ngClass]="itemBaseClass + '__name'">
+        {{ item.NOMBRE_PROVINCIA }}</span
+      >
 
-      <span *ngIf="item.stateSky" [ngClass]="itemBaseClass + '__description'">
+      <!-- <span
+        *ngIf="item | isCityModelModel"
+        [ngClass]="itemBaseClass + '__description'"
+      >
         <img
           [ngClass]="itemBaseClass + '__description__img'"
           [src]="'/assets/img/' + getStatus(item || undefined)"
           alt=""
         />
         {{ item.stateSky?.description }}</span
-      >
+      > -->
 
-      <span
-        *ngIf="item.temperatures"
+      <!-- <span
+        *ngIf="item | isCityModelModel"
         [ngClass]="itemBaseClass + '__temperature'"
         >{{ item.temperatures?.max }}ºC / {{ item.temperatures?.min }}ºC</span
-      >
+      > -->
     </ng-template>
 
     <span
-      *ngIf="withDelete"
+      *ngIf="handleClick"
       [ngClass]="itemBaseClass + '__delete'"
-      (click)="delete(i)"
+      (click)="handleClick.emit(item)"
     >
       <img
         [ngClass]="itemBaseClass + '__delete__img'"

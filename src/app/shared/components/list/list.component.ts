@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { DataListModel, ItemModel } from 'src/app/shared/models/DataList';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProvincesModel, ProvinceModel } from '../../models/Response';
 
 @Component({
   selector: 'app-list',
@@ -11,19 +11,18 @@ export class ListComponent {
   itemBaseClass: string = 'list__item';
   itemLinkBaseClass: string = 'list__item--with-link';
 
-  @Input() data: DataListModel | undefined;
+  @Input() data: ProvincesModel | undefined;
   @Input() simpleHeader: boolean = true;
-  @Input() withDelete: boolean = false;
+  @Input() linkable: boolean = false;
 
-  getStatus(item: ItemModel) {
-    if (item.temperatures?.min) {
-      const temp = parseInt(item.temperatures.min);
-      return temp < 0 ? 'ice.png' : temp > 10 ? 'sun.png' : 'cloud.png';
-    }
+  @Output() handleClick = new EventEmitter<ProvinceModel>();
+
+  getStatus(item: ProvinceModel) {
+    debugger;
+    // if (item.temperatures?.min) {
+    //   const temp = parseInt(item.temperatures.min);
+    //   return temp < 0 ? 'ice.png' : temp > 10 ? 'sun.png' : 'cloud.png';
+    // }
     return '';
-  }
-
-  delete(index: number) {
-    this.data && this.data.splice(index, 1);
   }
 }

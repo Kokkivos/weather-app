@@ -8,15 +8,10 @@
   <article [ngClass]="baseClass + '__content'">
     <div [ngClass]="baseClass + '__content__list'">
       <app-list
-        [data]="
-          (allProvinces$ | async)?.provincias
-            | transformModelTo
-              : {
-                  modelFrom: allModelsType.PROVINCES_MODEL,
-                  modelTo: allModelsType.DATA_LIST_MODEL
-                }
-        "
-        [withDelete]="true"
+        [data]="(allProvinces$ | async)?.provincias"
+        [linkable]="true"
+        [simpleHeader]="true"
+        (handleClick)="deleteProvince($event)"
       ></app-list>
     </div>
   </article>
