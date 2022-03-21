@@ -5,6 +5,7 @@ import { ProvincesActions } from '../reduxe/provinces.action';
 import { AppState } from '../reduxe/state.redux';
 import { AllProvincesModel, ProvinceModel } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
+import { AllModelsType } from '../shared/models/allModelsType';
 
 @Component({
   selector: 'app-provinces',
@@ -13,6 +14,8 @@ import { WeatherService } from '../shared/services/weather.service';
 })
 export class ProvincesComponent {
   baseClass: string = 'provinces';
+
+  allModelsType = AllModelsType;
 
   allProvinces$: Observable<AllProvincesModel> =
     this._weatherService.allProvinces$;

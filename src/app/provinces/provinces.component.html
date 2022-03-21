@@ -9,9 +9,12 @@
     <div [ngClass]="baseClass + '__content__list'">
       <app-list
         [data]="
-          allProvinces$
-            | async
-            | transformModelTo: { modelFrom: '', modelTo: '' }
+          (allProvinces$ | async)?.provincias
+            | transformModelTo
+              : {
+                  modelFrom: allModelsType.PROVINCES_MODEL,
+                  modelTo: allModelsType.DATA_LIST_MODEL
+                }
         "
         [withDelete]="true"
       ></app-list>

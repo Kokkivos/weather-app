@@ -29,7 +29,7 @@ export interface BreadcrumModel {
   url: string | null;
   title: string;
 }
-export interface BreadcrumsModelModel extends Array<BreadcrumModel> {}
+export interface BreadcrumsModel extends Array<BreadcrumModel> {}
 
 export interface SingleProvinceModel {
   title: string;
@@ -38,7 +38,7 @@ export interface SingleProvinceModel {
   ciudades: CitiesModel;
   provincia: ProvinceModel;
   comautonoma: ComautonomaModel;
-  breadcrumb: BreadcrumsModelModel;
+  breadcrumb: BreadcrumsModel;
   metadescripcion: string;
   keywords: string;
 }
