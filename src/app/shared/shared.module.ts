@@ -8,14 +8,20 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { SpinnerReducer } from '../reduxe/spinner.reducers';
+import { TransformModelToPipe } from './pipes/transform-model-to.pipe';
 
 @NgModule({
-  declarations: [ListComponent, SpinnerComponent, ReplacePipe],
+  declarations: [
+    ListComponent,
+    SpinnerComponent,
+    ReplacePipe,
+    TransformModelToPipe,
+  ],
   imports: [
     RouterModule,
     CommonModule,
     StoreModule.forFeature('spinner', SpinnerReducer),
   ],
-  exports: [ListComponent, SpinnerComponent, ReplacePipe],
+  exports: [ListComponent, SpinnerComponent, ReplacePipe, TransformModelToPipe],
 })
 export class SharedModule {}

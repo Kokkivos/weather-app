@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProvincesActions } from '../reduxe/provinces.action';
@@ -20,17 +20,7 @@ export class ProvincesComponent {
   constructor(
     private _store: Store<AppState>,
     private _weatherService: WeatherService
-  ) {
-    this.allProvinces$.subscribe({
-      next(data) {
-        debugger;
-      },
-      error(msg) {
-        debugger;
-        console.log('Error Getting Location: ', msg);
-      },
-    });
-  }
+  ) {}
 
   deleteProvince(province: ProvinceModel) {
     this._store.dispatch(ProvincesActions.deleteProvinces(province));

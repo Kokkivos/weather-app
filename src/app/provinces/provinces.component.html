@@ -2,12 +2,19 @@
   <article [ngClass]="baseClass + '__header'">
     <h1 [ngClass]="baseClass + '__header__title'">El tiempo</h1>
 
-    <h2 [ngClass]="baseClass + '__header__subtitle'">por provincias</h2>
+    <h2 [ngClass]="baseClass + '__header__subt replitle'">por provincias</h2>
   </article>
 
   <article [ngClass]="baseClass + '__content'">
     <div [ngClass]="baseClass + '__content__list'">
-      <!-- <app-list [data]="dataList" [withDelete]="true"></app-list> -->
+      <app-list
+        [data]="
+          allProvinces$
+            | async
+            | transformModelTo: { modelFrom: '', modelTo: '' }
+        "
+        [withDelete]="true"
+      ></app-list>
     </div>
   </article>
 </section>

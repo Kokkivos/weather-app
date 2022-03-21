@@ -1,0 +1,16 @@
+export enum AllModelsType {
+  STATE_SKY_MODEL = 'StateSkyModel',
+  TemperatureModel = 'TemperatureModel',
+  TemperaturesModel = 'TemperaturesModel',
+  CityModel = 'CityModel',
+  CitiesModel = 'CitiesModel',
+  ComautonomaModel = 'ComautonomaModel',
+  BreadcrumModel = 'BreadcrumModel',
+  BreadcrumsModelModel = 'BreadcrumsModelModel',
+  SingleProvinceModel = 'SingleProvinceModel',
+  ProvinceModel = 'ProvinceModel',
+  ProvincesModel = 'ProvincesModel',
+  AllProvincesModel = 'AllProvincesModel',
+  ItemModel = 'ItemModel',
+  DataListModel = 'DataListModel',
+}
