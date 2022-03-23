@@ -7,7 +7,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
-import { SpinnerReducer } from '../reduxe/spinner.reducers';
+import { SpinnerReducer } from '../redux/spinner.reducers';
 import { TransformModelToPipe } from './pipes/transform-model-to.pipe';
 import { IsProvinceModelPipe } from './pipes/is-province-model.pipe';
 import { IsCityModelModelPipe } from './pipes/is-city-model-model.pipe';

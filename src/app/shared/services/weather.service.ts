@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, firstValueFrom, map, Observable, of } from 'rxjs';
 import { SingleProvinceModel, AllProvincesModel } from '../models/Response';
 import { createFeatureSelector, Store } from '@ngrx/store';
-import { AppState } from 'src/app/reduxe/state.redux';
+import { AppState } from 'src/app/redux/state.redux';
 
 @Injectable({
   providedIn: 'root',

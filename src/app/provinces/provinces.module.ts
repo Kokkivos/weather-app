@@ -7,7 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProvinceComponent } from '../components/province/province.component';
 
 import { StoreModule } from '@ngrx/store';
-import { ProvincesReducer } from '../reduxe/provinces.reducers';
+import { ProvincesReducer } from '../redux/provinces.reducers';
+import { ProvinceInfoReducer } from '../redux/provinceInfo.reducers';
 
 @NgModule({
   declarations: [ProvincesComponent, ProvinceComponent],
@@ -16,6 +17,7 @@ import { ProvincesReducer } from '../reduxe/provinces.reducers';
     ProvincesRoutingModule,
     SharedModule,
     StoreModule.forFeature('allProvinces', ProvincesReducer),
+    StoreModule.forFeature('singleProvince', ProvinceInfoReducer),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

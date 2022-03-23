@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProvinceComponent } from '../components/province/province.component';
+import { ProvinceResolver } from '../components/province/province.resolver';
 
 import { ProvincesComponent } from './provinces.component';
 import { ProvincesResolver } from './provinces.resolver';
@@ -15,8 +16,9 @@ const routes: Routes = [
         resolve: { provinces: ProvincesResolver },
       },
       {
-        path: 'province/:code',
+        path: 'province/:CODPROV',
         component: ProvinceComponent,
+        resolve: { provinces: ProvinceResolver },
       },
     ],
   },

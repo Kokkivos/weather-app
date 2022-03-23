@@ -4,12 +4,12 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { AppState } from '../reduxe/state.redux';
+import { AppState } from '../redux/state.redux';
 import { AllProvincesModel } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
 import { Store } from '@ngrx/store';
-import { SpinnerActions } from '../reduxe/spinner.actions';
-import { ProvincesActions } from '../reduxe/provinces.action';
+import { SpinnerActions } from '../redux/spinner.actions';
+import { ProvincesActions } from '../redux/provinces.action';
 
 @Injectable({
   providedIn: 'root',

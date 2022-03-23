@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ProvincesActions } from '../reduxe/provinces.action';
-import { AppState } from '../reduxe/state.redux';
+import { ProvincesActions } from '../redux/provinces.action';
+import { AppState } from '../redux/state.redux';
 import { AllProvincesModel, ProvinceModel } from '../shared/models/Response';
 import { WeatherService } from '../shared/services/weather.service';
 import { AllModelsType } from '../shared/models/allModelsType';

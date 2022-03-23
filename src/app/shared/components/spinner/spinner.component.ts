@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { createFeatureSelector, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { SpinnerState } from 'src/app/reduxe/spinner.reducers';
-import { AppState } from 'src/app/reduxe/state.redux';
+import { SpinnerState } from 'src/app/redux/spinner.reducers';
+import { AppState } from 'src/app/redux/state.redux';
 
 @Component({
   selector: 'app-spinner',
