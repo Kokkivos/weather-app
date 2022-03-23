@@ -72,7 +72,7 @@
 
     &__list {
       height: auto;
-      overflow: hidden;
+      overflow: scroll;
     }
 
     @include mqMax768-content;

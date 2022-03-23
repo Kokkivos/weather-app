@@ -11,6 +11,4 @@ export enum AllModelsType {
   PROVINCE_MODEL = 'ProvinceModel',
   PROVINCES_MODEL = 'ProvincesModel',
   ALL_PROVINCES_MODEL = 'AllProvincesModel',
-  ITEM_MODEL = 'ItemModel',
-  DATA_LIST_MODEL = 'DataListModel',
 }
