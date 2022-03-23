@@ -6,7 +6,6 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
 import { ProvinceInfoActions } from 'src/app/redux/provinceInfo.action';
 import { SpinnerActions } from 'src/app/redux/spinner.actions';
 import { AppState } from 'src/app/redux/state.redux';

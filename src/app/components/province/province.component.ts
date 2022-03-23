@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { SingleProvinceModel } from 'src/app/shared/models/Response';
 
 import { WeatherService } from 'src/app/shared/services/weather.service';
 
@@ -8,48 +10,14 @@ import { WeatherService } from 'src/app/shared/services/weather.service';
   templateUrl: './province.component.html',
   styleUrls: ['./province.component.scss'],
 })
-export class ProvinceComponent implements OnInit {
+export class ProvinceComponent {
   baseClass: string = 'province';
+
+  singleProvince$: Observable<SingleProvinceModel> =
+    this._weatherService.singleProvince$;
 
   constructor(
     private route: ActivatedRoute,
-    private _router: Router,
     private _weatherService: WeatherService
   ) {}
-
-  async ngOnInit(): Promise<void> {
-    const routeParams = this.route.snapshot.paramMap;
-    const provinceCode = String(routeParams.get('code'));
-
-    // await this._weatherService.getProvinceInfo(provinceCode).subscribe(
-    //   (res: ProvinceResponseModel) => {
-    //     const { provincia, ciudades, today, tomorrow } = res;
-    //     this.WeatherDescriptionModel = {
-    //       today: today.p,
-    //       tomorrow: tomorrow.p,
-    //     };
-    //     this.province = provincia;
-    //     this.cities = ciudades;
-
-    //     this.dataList =
-    //       this.cities &&
-    //       this.cities.map((o) => {
-    //         const res: ItemModel = {
-    //           name: o.name,
-    //           stateSky: o.stateSky,
-    //           temperatures: o.temperatures,
-    //         };
-    //         return res || undefined;
-    //       });
-
-    //     this.handleLoading();
-    //   },
-    //   (err: any) => {
-    //     console.log('HTTP Error', err);
-    //     this._router.navigate(['error']);
-    //     this.handleLoading();
-    //   },
-    //   () => console.log('HTTP request completed.')
-    // );
-  }
 }

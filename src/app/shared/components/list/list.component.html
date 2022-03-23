@@ -8,55 +8,55 @@
   >
 </div>
 
-<ul [ngClass]="baseClass">
+<ul>
   <li
+    *ngFor="let item of data"
     [ngClass]="
       linkable ? itemBaseClass + ' ' + itemLinkBaseClass : itemBaseClass
     "
-    *ngFor="let item of data"
   >
-    <a
-      [ngClass]="itemBaseClass + '__link'"
-      *ngIf="linkable; else dataListTemplate"
-      [routerLink]="['/province', item.CODPROV]"
-    >
-      <ng-container *ngTemplateOutlet="dataListTemplate"> </ng-container>
-    </a>
+    <ng-container *ngIf="item | isCityModelModel">
+      <span [ngClass]="itemBaseClass + '__name'"> {{ item.name }}</span>
 
-    <ng-template #dataListTemplate>
-      <span [ngClass]="itemBaseClass + '__name'">
-        {{ item.NOMBRE_PROVINCIA }}</span
-      >
-
-      <!-- <span
+      <span
         *ngIf="item | isCityModelModel"
         [ngClass]="itemBaseClass + '__description'"
       >
         <img
+          *ngIf="getStatus(item)"
           [ngClass]="itemBaseClass + '__description__img'"
-          [src]="'/assets/img/' + getStatus(item || undefined)"
+          [src]="'/assets/img/' + getStatus(item)"
           alt=""
         />
         {{ item.stateSky?.description }}</span
-      > -->
+      >
 
-      <!-- <span
+      <span
         *ngIf="item | isCityModelModel"
         [ngClass]="itemBaseClass + '__temperature'"
         >{{ item.temperatures?.max }}ºC / {{ item.temperatures?.min }}ºC</span
-      > -->
-    </ng-template>
+      >
+    </ng-container>
 
-    <span
-      *ngIf="handleClick"
-      [ngClass]="itemBaseClass + '__delete'"
-      (click)="handleClick.emit(item)"
-    >
-      <img
-        [ngClass]="itemBaseClass + '__delete__img'"
-        src="assets/img/X.svg"
-        alt=""
-      />
-    </span>
+    <ng-container *ngIf="item | isProvinceModel">
+      <a
+        [ngClass]="itemBaseClass + '__link'"
+        [routerLink]="['/province', item.CODPROV]"
+      >
+        {{ item.NOMBRE_PROVINCIA }}
+      </a>
+
+      <span
+        *ngIf="handleClick"
+        [ngClass]="itemBaseClass + '__delete'"
+        (click)="handleClick.emit(item)"
+      >
+        <img
+          [ngClass]="itemBaseClass + '__delete__img'"
+          src="assets/img/X.svg"
+          alt=""
+        />
+      </span>
+    </ng-container>
   </li>
 </ul>
